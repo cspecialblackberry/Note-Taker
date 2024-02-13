@@ -10,6 +10,7 @@
 
 // WHEN I enter a new note title and the note’s text
 // THEN a "Save Note" button and a "Clear Form" button appear in the navigation at the top of the page
+//DONE
 
 // WHEN I click on the Save button
 // THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes and the buttons in the navigation disappear
@@ -45,3 +46,5 @@ app.get('/notes', (req, res) =>
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT}`)
 );
+
+

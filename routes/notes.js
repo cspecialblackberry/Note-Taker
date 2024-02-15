@@ -2,7 +2,6 @@ const notesRouter = require('express').Router();
 const fs = require('fs');
 
 notesRouter.get('/', (req, res) => {
-    console.log('hi')
     fs.readFile('./db/db.json', 'utf-8', (err, data) => {
         if (err) {
             console.log(err)
@@ -15,7 +14,7 @@ notesRouter.get('/', (req, res) => {
 
 notesRouter.post('/', (req, res) => {
     console.log(req.body)
-    const { title, text } = req.body
+    const { title, text, id } = req.body
 
     fs.readFile('./db/db.json', 'utf-8', (err, data) => {
         if (err) {
@@ -24,7 +23,8 @@ notesRouter.post('/', (req, res) => {
             const allNotes = JSON.parse(data)
             const newNote = {
                 title,
-                text
+                text,
+                id
             }
             allNotes.push(newNote)
             fs.writeFile('./db/db.json', JSON.stringify(allNotes), (err) => {
@@ -32,6 +32,7 @@ notesRouter.post('/', (req, res) => {
                     console.log(err)
                 }
             })
+            res
         }
     })
 })

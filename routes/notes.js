@@ -32,9 +32,13 @@ notesRouter.post('/', (req, res) => {
                     console.log(err)
                 }
             })
-            res
         }
     })
+    const response = {
+        status : 'success'
+    }
+
+    res.status(201).json(response)
 })
 
 module.exports = notesRouter
